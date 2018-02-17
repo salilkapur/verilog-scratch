@@ -1,3 +1,8 @@
+//--------------------------------------------
+// Source: https://github.com/packet-transactions/atomsyn/blob/master/counter.v
+// -------------------------------------------
+
+
 module counter(
     clk,
     i__inc,
