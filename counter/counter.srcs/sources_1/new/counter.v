@@ -44,12 +44,7 @@ begin
             // [START] Experiment - 2
             /*
             if (r__count__pff % 2 == 0)
-            begin
-                if (r__count__pff % 4 == 0)
-                    o__count__next = r__count__pff + 2'b01;
-                else
-                    o__count__next = r__count__pff * 2'b11;
-            end
+                o__count__next = r__count__pff + 2'b01;
             else
                 o__count__next = r__count__pff / 2'b10;
             */
