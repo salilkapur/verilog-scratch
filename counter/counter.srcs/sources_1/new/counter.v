@@ -29,8 +29,15 @@ begin
         end
         else
         begin
-            //o__count__next = r__count__pff + 1'b1;
-        
+            // [START] Experiment - 1
+            
+            o__count__next = r__count__pff + 1'b1;
+            
+            // [END] Experiment - 1
+
+
+            // [START] Experiment - 2
+            /*
             if (r__count__pff % 2 == 0)
             begin
                 if (r__count__pff % 4 == 0)
@@ -40,6 +47,23 @@ begin
             end
             else
                 o__count__next = r__count__pff / 2'b10;
+            */
+            // [END] Experiment - 2
+
+
+            // [START] Experiment - 3
+            /*
+            if (r__count__pff % 2 == 0)
+            begin
+                if (r__count__pff % 4 == 0)
+                    o__count__next = r__count__pff + 2'b01;
+                else
+                    o__count__next = r__count__pff * 2'b11;
+            end
+            else
+                o__count__next = r__count__pff / 2'b10;
+            */
+            // [END] Experiment - 3
         
         end
     end
