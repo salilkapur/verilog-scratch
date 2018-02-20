@@ -1,0 +1,29 @@
+Verilog Notes
+=============
+
+Different between constants and parameters
+------------------------------------------
+
+* Parameters: They are usually used to store constants like time delays, bus widths etc.
+* Constants: 
+
+Blocking vs Non-Blocking
+------------------------
+
+* Use non-blocking statements in sequential logic and 
+  blocking statements in combinational logic.
+
+General Guidelines
+==================
+
+* Try to sandwich combinational logic between two registers.
+  By doing so the timing analysis will constraint the combinational
+  logic within one clock cycle.
+
+* Be careful of the sensitivity list. While using always_comb
+  the tool tries to infer the sensitivity list based on the assignment
+  statements in the code. This might not be ideal always. At this point it
+  seems better to specify the sensitivity list manually.
+
+* It is not a good practice to put statements outside of a
+  module. Use a package and import the package.
