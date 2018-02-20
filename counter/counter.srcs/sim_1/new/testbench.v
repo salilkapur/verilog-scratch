@@ -25,18 +25,28 @@ module testbench(
     reg clk = 1'b0;
     reg reset = 1'b1;
     
-    logic [2:0] count_out;
+    logic [7:0] count_out;
     
-    counter counter_instance(.clk(clk),
-                            .i__inc(1'b1),
+    counter_top counter_top_instance(.clk(clk),
+                            .inc(1'b1),
                             .reset(reset),
-                            .o__count__next(count_out));
+                            .out(count_out));
     
     initial
     begin
         #10 clk = ~clk;
         #10 clk = ~clk;
         reset = ~reset;
+        #10 clk = ~clk;
+        #10 clk = ~clk;
+        #10 clk = ~clk;
+        #10 clk = ~clk;
+        #10 clk = ~clk;
+        #10 clk = ~clk;
+        #10 clk = ~clk;
+        #10 clk = ~clk;
+        #10 clk = ~clk;
+        #10 clk = ~clk;
         #10 clk = ~clk;
         #10 clk = ~clk;
         #10 clk = ~clk;

@@ -11,16 +11,16 @@ module counter(
 );
 
 // Parameters
-parameter COUNT_WIDTH                   = 3;
+parameter COUNT_WIDTH                   = 8;
 parameter INIT_VALUE                    = 1'b0;
 
 // Global signals
 input  logic                            clk;
 input  logic                            i__inc;
 input  logic                            reset;
-output logic [COUNT_WIDTH-1:0]          o__count__next;
+output logic [0:COUNT_WIDTH-1]          o__count__next;
 
-logic [COUNT_WIDTH-1:0]                 r__count__pff;
+logic [0:COUNT_WIDTH-1]                 r__count__pff;
 
 always_comb
 begin
@@ -28,7 +28,7 @@ begin
 
     if(i__inc == 1'b1)
     begin
-        if(r__count__pff == 7)
+        if(r__count__pff == 128)
         begin
             o__count__next = '0;
         end
