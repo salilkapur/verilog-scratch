@@ -5,7 +5,7 @@ Different between constants and parameters
 ------------------------------------------
 
 * Parameters: They are usually used to store constants like time delays, bus widths etc.
-* Constants: 
+* Constants:  <TO BE UPDATED>
 
 Blocking vs Non-Blocking
 ------------------------
