@@ -21,7 +21,7 @@
 
 
 module display(  
-         input [0:15] x,
+         input [0:31] x,
         input clk,
         input clr,
         output reg [6:0] a_to_g,
@@ -43,6 +43,7 @@ module display(
     
     always @(posedge clk)// or posedge clr)
         
+        /*
         case(s)
         0:digit = x[0:3]; // s is 00 -->0 ;  digit gets assigned 4 bit value assigned to x[3:0]
         1:digit = x[4:7]; // s is 01 -->1 ;  digit gets assigned 4 bit value assigned to x[7:4]
@@ -52,36 +53,37 @@ module display(
         default:digit = x[0:3];
         
         endcase
+        */
+        if (x >= 32'h3b9aca00)
+            digit = 0;
+        else
+            digit = 1;
         
         //decoder or truth-table for 7a_to_g display values
         always @(*)
-    
-    case(digit)
-    
-    
-    //////////<---MSB-LSB<---
-    //////////////gfedcba////////////////////////////////////////////              a
-    0:a_to_g = 7'b1000000;////0000                                                   __                    
-    1:a_to_g = 7'b1111001;////0001                                                f/      /b
-    2:a_to_g = 7'b0100100;////0010                                                  g
-    //                                                                           __    
-    3:a_to_g = 7'b0110000;////0011                                              e /   /c
-    4:a_to_g = 7'b0011001;////0100                                                 __
-    5:a_to_g = 7'b0010010;////0101                                               d  
-    6:a_to_g = 7'b0000010;////0110
-    7:a_to_g = 7'b1111000;////0111
-    8:a_to_g = 7'b0000000;////1000
-    9:a_to_g = 7'b0010000;////1001
-    'hA:a_to_g = 7'b0001000; 
-    'hB:a_to_g = 7'b0000011; 
-    'hC:a_to_g = 7'b0100111;
-    'hD:a_to_g = 7'b0100001;
-    'hE:a_to_g = 7'b0000110;
-    'hF:a_to_g = 7'b0001110;
-    default: a_to_g = 7'b0000000; // U
-    
-    endcase
-    
+        case(digit)       
+            //////////<---MSB-LSB<---
+            //////////////gfedcba////////////////////////////////////////////              a
+            0:a_to_g = 7'b1000000;////0000                                                   __                    
+            1:a_to_g = 7'b1111001;////0001                                                f/      /b
+            2:a_to_g = 7'b0100100;////0010                                                  g
+            //                                                                           __    
+            3:a_to_g = 7'b0110000;////0011                                              e /   /c
+            4:a_to_g = 7'b0011001;////0100                                                 __
+            5:a_to_g = 7'b0010010;////0101                                               d  
+            6:a_to_g = 7'b0000010;////0110
+            7:a_to_g = 7'b1111000;////0111
+            8:a_to_g = 7'b0000000;////1000
+            9:a_to_g = 7'b0010000;////1001
+            'hA:a_to_g = 7'b0001000; 
+            'hB:a_to_g = 7'b0000011; 
+            'hC:a_to_g = 7'b0100111;
+            'hD:a_to_g = 7'b0100001;
+            'hE:a_to_g = 7'b0000110;
+            'hF:a_to_g = 7'b0001110;
+            default: a_to_g = 7'b0000000; // U
+        endcase
+        
     
     always @(*)begin
     an=4'b1111;

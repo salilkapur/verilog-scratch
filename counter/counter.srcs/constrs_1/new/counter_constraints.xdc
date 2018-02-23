@@ -1,14 +1,14 @@
 set_property PACKAGE_PIN W5 [get_ports clk]
 set_property IOSTANDARD LVCMOS33 [get_ports clk]
-create_clock -period 10000000000.000 -name counter_clk -waveform {0.000 5000000000.000} [get_ports clk]
+create_clock -period 8.000 -name counter_clk -waveform {0.000 4.000} [get_ports clk]
 
-set_property PACKAGE_PIN V17 [get_ports {inc}]
-set_property IOSTANDARD LVCMOS33 [get_ports {inc}]
+set_property PACKAGE_PIN V17 [get_ports i_inc]
+set_property IOSTANDARD LVCMOS33 [get_ports i_inc]
 
 # Reset button (Center button being used as reset)
-set_property PACKAGE_PIN U18 [get_ports reset]				
-set_property IOSTANDARD LVCMOS33 [get_ports reset]
-		
+set_property PACKAGE_PIN U18 [get_ports i_reset]
+set_property IOSTANDARD LVCMOS33 [get_ports i_reset]
+
 # Seven segment display
 set_property PACKAGE_PIN W7 [get_ports {seg[0]}]
 set_property IOSTANDARD LVCMOS33 [get_ports {seg[0]}]
@@ -36,3 +36,4 @@ set_property PACKAGE_PIN V4 [get_ports {an[2]}]
 set_property IOSTANDARD LVCMOS33 [get_ports {an[2]}]
 set_property PACKAGE_PIN W4 [get_ports {an[3]}]
 set_property IOSTANDARD LVCMOS33 [get_ports {an[3]}]
+
