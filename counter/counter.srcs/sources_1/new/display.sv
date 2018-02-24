@@ -42,4 +42,10 @@ begin
         an[s] = 0;
 end
 
+always @(posedge clk or posedge clr) begin
+if ( clr == 1)
+    clkdiv <= 0;
+else
+    clkdiv <= clkdiv+1;
+end
 endmodule
