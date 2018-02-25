@@ -34,22 +34,29 @@ clk_wiz_50(.clk_in1(clk),
             .clk_out_50(clk_50));
 */
 
+/*
 logic clk_35;
 clk_wiz_35(.clk_in1(clk),
             .reset(1'b0),
             .locked(locked),
             .clk_out_35(clk_35));
-            
+*/
+
+logic clk_400;
+clk_wiz_400(.clk_in1(clk),
+            .reset(1'b0),
+            .locked(locked),
+            .clk_out_400(clk_400));        
 
 reg [0:31] out;
-counter counter_instance(.clk(clk_35),
+counter counter_instance(.clk(clk_400),
     .i__inc(i_inc),
     .i__reset(i_reset),
     .o__count__next(out));
 
 display u (                    
     .x(out),
-    .clk(clk_35),
+    .clk(clk_400),
     .clr(i_reset),
     .a_to_g(seg),
     .an(an),
