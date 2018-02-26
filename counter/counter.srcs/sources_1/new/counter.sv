@@ -24,7 +24,7 @@ logic [0:COUNT_WIDTH-1]                 r__count__pff;
 reg inc;
 reg reset;
 
-always @(posedge clk)
+always_ff @(posedge clk)
 begin
     inc <= i__inc;
     reset <= i__reset;
@@ -33,14 +33,11 @@ end
 always_comb
 begin
     o__count__next = r__count__pff;
-
-    if(inc == 1'b1)
-    begin
-        if(r__count__pff == 32'h3b9aca00 + 32'h3b9aca00)
-            o__count__next = '0;
-        else
-            o__count__next = r__count__pff + 1'b1;
-    end
+    
+    if(r__count__pff == 32'h3b9aca00 + 32'h3b9aca00)
+        o__count__next = '0;
+    else
+        o__count__next = r__count__pff + 1'b1;
 end
 
 always_ff @ (posedge clk)

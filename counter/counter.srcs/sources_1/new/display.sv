@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 
 module display(  
-    input [0:31] x,
+    input [0:31] in_count,
     input clk,
     input clr,
     output reg [6:0] a_to_g,
@@ -9,6 +9,7 @@ module display(
     output wire dp
 );
 
+logic [0:31] x;
 wire [1:0] s;     
 reg [3:0] digit;
 wire [3:0] aen;
@@ -18,15 +19,18 @@ assign dp = 1;
 assign s = clkdiv[19:18];
 assign aen = 4'b1111; // all turned off initially
 
-always @(posedge clk)
+always_ff @(posedge clk)
+    x <= in_count;
+
+always_ff @(posedge clk)
 begin
     if (x >= 32'h3b9aca00)
-        digit = 0;
+        digit <= 0;
     else
-        digit = 1;
+        digit <= 1;
 end
 
-always @(*)
+always_comb
 begin
     case(digit)       
         // Seven segment display pins - gfedcba
@@ -35,17 +39,18 @@ begin
     endcase
 end
 
-always @(*)
-begin
+always_comb
+begin    
     an=4'b1111;
     if(aen[s] == 1)
         an[s] = 0;
 end
 
-always @(posedge clk or posedge clr) begin
-if ( clr == 1)
-    clkdiv <= 0;
-else
-    clkdiv <= clkdiv+1;
-end
+always_ff @(posedge clk)
+begin
+    if ( clr == 1)
+        clkdiv <= 0;
+    else
+        clkdiv <= clkdiv+1;
+    end
 endmodule

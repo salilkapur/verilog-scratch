@@ -35,13 +35,13 @@
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="9"/>
-    <Option Name="WTModelSimExportSim" Val="9"/>
-    <Option Name="WTQuestaExportSim" Val="9"/>
-    <Option Name="WTIesExportSim" Val="9"/>
-    <Option Name="WTVcsExportSim" Val="9"/>
-    <Option Name="WTRivieraExportSim" Val="9"/>
-    <Option Name="WTActivehdlExportSim" Val="9"/>
+    <Option Name="WTXSimExportSim" Val="12"/>
+    <Option Name="WTModelSimExportSim" Val="12"/>
+    <Option Name="WTQuestaExportSim" Val="12"/>
+    <Option Name="WTIesExportSim" Val="12"/>
+    <Option Name="WTVcsExportSim" Val="12"/>
+    <Option Name="WTRivieraExportSim" Val="12"/>
+    <Option Name="WTActivehdlExportSim" Val="12"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -139,8 +139,8 @@
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
-    <FileSet Name="clk_wiz_400" Type="BlockSrcs" RelSrcDir="$PSRCDIR/clk_wiz_400">
-      <File Path="$PSRCDIR/sources_1/ip/clk_wiz_400/clk_wiz_400.xci">
+    <FileSet Name="clk_wiz_gen" Type="BlockSrcs" RelSrcDir="$PSRCDIR/clk_wiz_gen">
+      <File Path="$PSRCDIR/sources_1/ip/clk_wiz_gen/clk_wiz_gen.xci">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -148,7 +148,7 @@
         </FileInfo>
       </File>
       <Config>
-        <Option Name="TopModule" Val="clk_wiz_400"/>
+        <Option Name="TopModule" Val="clk_wiz_gen"/>
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
@@ -199,7 +199,7 @@
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
-    <Run Id="clk_wiz_400_synth_1" Type="Ft3:Synth" SrcSet="clk_wiz_400" Part="xc7a35tcpg236-1" ConstrsSet="clk_wiz_400" Description="Vivado Synthesis Defaults" Dir="$PRUNDIR/clk_wiz_400_synth_1" IncludeInArchive="true">
+    <Run Id="clk_wiz_gen_synth_1" Type="Ft3:Synth" SrcSet="clk_wiz_gen" Part="xc7a35tcpg236-1" ConstrsSet="clk_wiz_gen" Description="Vivado Synthesis Defaults" Dir="$PRUNDIR/clk_wiz_gen_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2016"/>
         <Step Id="synth_design"/>
@@ -217,7 +217,9 @@
         <Step Id="post_place_power_opt_design"/>
         <Step Id="phys_opt_design"/>
         <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="post_route_phys_opt_design">
+          <Option Id="Directive">1</Option>
+        </Step>
         <Step Id="write_bitstream">
           <Option Id="VerboseBool">1</Option>
         </Step>
@@ -255,7 +257,7 @@
       </Strategy>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
-    <Run Id="clk_wiz_400_impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="clk_wiz_400" Description="Default settings for Implementation." SynthRun="clk_wiz_400_synth_1" IncludeInArchive="false">
+    <Run Id="clk_wiz_gen_impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="clk_wiz_gen" Description="Default settings for Implementation." SynthRun="clk_wiz_gen_synth_1" IncludeInArchive="false">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2016"/>
         <Step Id="init_design"/>

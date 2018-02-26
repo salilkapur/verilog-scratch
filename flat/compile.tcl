@@ -5,7 +5,7 @@ read_verilog -sv  counter_top.sv counter.sv display.sv
 read_xdc          counter_constraints.xdc
 
 # Run Synthesis
-synth_design -top aes -part xc7a35tcpg236-1
+synth_design -top counter_top -part xc7a35tcpg236-1
 
 # Report timing
 report_timing -setup -file counter_setup_synth_report.txt
