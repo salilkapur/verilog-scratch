@@ -1,0 +1,1 @@
+../counter/counter.srcs/sources_1/new/counter_top.sv
